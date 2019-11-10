@@ -2,6 +2,9 @@
 
 Afin d'éviter certains problèmes et de ne pas "salir" votre machine, vous aurez besoin d'une VM pour une partie du Workshop.
 
+* [Virtual Box (Mac et Windows sans docker/hyper-v)](#Virtual-Box)
+* [Hyper-V (Windows avec docker/hyper-v)](#Hyper-V)
+
 ## Virtual Box
 Si vous avez un Macos ou un Windows sans docker (et donc **sans Hyper-V**) vous pourez utilisez **Virtual Box**.
 * Installez Virtual Box
