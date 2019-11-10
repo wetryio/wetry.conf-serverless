@@ -1,6 +1,6 @@
 # Importer la VM
 
-Afin d'éviter certains problèmes et de ne pas "salire" votre machine, vous aurez besoin d'une VM pour une partie du Workshop.
+Afin d'éviter certains problèmes et de ne pas "salir" votre machine, vous aurez besoin d'une VM pour une partie du Workshop.
 
 ## Virtual Box
 Si vous avez un Macos ou un Windows sans docker (et donc **sans Hyper-V**) vous pourez utilisez **Virtual Box**.
