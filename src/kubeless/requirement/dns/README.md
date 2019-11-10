@@ -1,7 +1,7 @@
 # Google DNS
 
-Malheureusement l'outil XIP.IO que nous allons utilisé durant ce Workshop n'est pas disponible sur les serveurs DNS belges.
-Nous allons donc devoir utiliser celui de google.
+Malheureusement l'outil XIP.IO que nous allons utilisr durant ce Workshop n'est pas disponible sur les serveurs DNS belges.
+Nous allons donc devoir utiliser ceux de google.
 
 * [Windows](#Windows)
 * [OSX](#OSX)
