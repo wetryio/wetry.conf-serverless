@@ -1,0 +1,8 @@
+{
+    "name": "textanalyzer",
+    "version": "0.0.1",
+    "dependencies": {
+        "@azure/ms-rest-js": "2.0.4",
+        "@azure/cognitiveservices-textanalytics": "4.0.0"
+    }
+}
