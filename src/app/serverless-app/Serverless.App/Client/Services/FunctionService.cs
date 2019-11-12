@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Blazored.LocalStorage;
+using Newtonsoft.Json;
 using Serverless.App.Shared.Models;
 using System;
 using System.Net.Http;
@@ -15,11 +16,21 @@ namespace Serverless.App.Client.Services
 
     public class FunctionService : IFunctionService
     {
+
+        private readonly Blazored.LocalStorage.ILocalStorageService localStorage;
+
+        public FunctionService(ILocalStorageService localStorage)
+        {
+            this.localStorage = localStorage;
+        }
+
         public async Task<SentimentalAnalysis> AnalysisSentimentalText(string content)
         {
+            var getUrl = await localStorage.GetItemAsync<string>("getUrl");
+
             using (HttpClient httpClient = new HttpClient()
             {
-                BaseAddress = new Uri("http://localhost:7000")
+                BaseAddress = new Uri(getUrl)
             })
             {
                 var response = await httpClient.GetAsync(string.Empty);
@@ -34,12 +45,14 @@ namespace Serverless.App.Client.Services
 
         public async Task<GoldenBookItemDto> CreateGoldenBookItem(GoldenBookCreateItemDto entity)
         {
+            var postUrl = await localStorage.GetItemAsync<string>("postUrl");
+
             using (HttpClient httpClient = new HttpClient()
             {
-                BaseAddress = new Uri("http://localhost:7000")
+                BaseAddress = new Uri(postUrl)
             })
             {
-                var response = await httpClient.PostAsync("/api/CreateGoldenBookItemHttpTrigger", new StringContent(JsonConvert.SerializeObject(entity)));
+                var response = await httpClient.PostAsync(string.Empty, new StringContent(JsonConvert.SerializeObject(entity)));
                 if (response.IsSuccessStatusCode)
                 {
                     return JsonConvert.DeserializeObject<GoldenBookItemDto>(await response.Content.ReadAsStringAsync());
@@ -51,12 +64,14 @@ namespace Serverless.App.Client.Services
 
         public async Task<GoldenBook> GetGoldenBookItems()
         {
+            var sentimentsUrl = await localStorage.GetItemAsync<string>("sentimentsUrl");
+
             using (HttpClient httpClient = new HttpClient()
             {
-                BaseAddress = new Uri("http://localhost:7000")
+                BaseAddress = new Uri(sentimentsUrl)
             })
             {
-                var response = await httpClient.GetAsync("/api/GetGoldenBookItemsHttpTrigger");
+                var response = await httpClient.GetAsync(string.Empty);
                 if (response.IsSuccessStatusCode)
                 {
                     return JsonConvert.DeserializeObject<GoldenBook>(await response.Content.ReadAsStringAsync());

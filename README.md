@@ -8,6 +8,18 @@
 ## Create project
 Copier le fichier book.json de common vers Azure dans le folder des functions.
 
+## Website de test
+https://wetryconfserverlessapp.azurewebsites.net/
+
+## CORS
+``` javascript
+"Host": {
+    "LocalHttpPort": 7001,
+    "CORS": "*",
+    "CORSCredentials": false
+  }
+```
+
 ## HttpTrigger Function Get Items
 Ajouter :
 

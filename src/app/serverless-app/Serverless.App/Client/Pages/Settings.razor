@@ -1,0 +1,52 @@
+﻿@page "/settings"
+
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<h1>Hello ! Welcome to WeTry.conf - Wetry serverless avec vous !</h1>
+<h4><a href="https://wetry.tech" target="_blank">WeTry.tech</a></h4>
+
+<div class="container">
+    <div class="form-group">
+        <label>Get golden book</label>
+        <br />
+        <input type="text" @bind="GetUrl" />
+    </div>
+
+    <div class="form-group">
+        <label>Create golden book</label>
+        <br />
+        <input type="text" @bind="PostUrl" />
+    </div>
+
+    <div class="form-group">
+        <label>Analyse golden book</label>
+        <br />
+        <input type="text" @bind="SentimentsUrl" />
+    </div>
+
+    <div class="form-group">
+        <button @onclick="(() => Save())">Save</button>
+    </div>
+</div>
+
+@code{
+
+    public string GetUrl { get; set; }
+    public string PostUrl { get; set; }
+    public string SentimentsUrl { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        GetUrl = await localStorage.GetItemAsync<string>("getUrl");
+        PostUrl = await localStorage.GetItemAsync<string>("postUrl");
+        SentimentsUrl = await localStorage.GetItemAsync<string>("sentimentsUrl");
+    }
+
+    public async Task Save()
+    {
+        await localStorage.SetItemAsync("getUrl", GetUrl);
+        await localStorage.SetItemAsync("postUrl", PostUrl);
+        await localStorage.SetItemAsync("sentimentsUrl", SentimentsUrl);
+    }
+}
