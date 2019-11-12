@@ -65,7 +65,7 @@ function cleanItems() {
     var itemsCanStay = { data: [] };
     for (var i = 0; i < items.data.length; i++) {
         var item = items.data[i];
-        var diff = (item.createAt)) - (new Date());
+        var diff = (new Date(item.createAt)) - (new Date());
         if(diff >= (-FIVE_MIN)){
             itemsCanStay.data.push(item);
         }
