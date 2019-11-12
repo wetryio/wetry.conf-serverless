@@ -60,14 +60,16 @@ function writeGoldenBookItems(items) {
 }
 
 function cleanItems() {
+    var FIVE_MIN = 5*60*1000;
     var items = getGoldenBookItems();
     var itemsCanStay = { data: [] };
     for (var i = 0; i < items.data.length; i++) {
-        if(items.data[i].createAt < ){
-            
+        var item = items.data[i];
+        var diff = (item.createAt)) - (new Date());
+        if(diff >= (-FIVE_MIN)){
+            itemsCanStay.data.push(item);
         }
     }
-
     writeGoldenBookItems(itemsCanStay);
 }
 ```
